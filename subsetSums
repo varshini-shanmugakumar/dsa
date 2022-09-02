@@ -1,0 +1,23 @@
+void myfun(int index,vector<int> arr,int sum,int N,vector<int> &ans){
+        if(index==N){
+            ans.push_back(sum);
+            return;
+        }
+        myfun(index+1,arr,sum+arr[index],N,ans);
+        
+        myfun(index+1,arr,sum,N,ans);
+        
+    }
+
+
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        vector<int> ans;
+       //set<int> s;
+        int sum=0;
+        int idx=0;
+        myfun(idx,arr,sum,N,ans);
+        sort(ans.begin(),ans.end());
+        
+        return ans;
+    }
