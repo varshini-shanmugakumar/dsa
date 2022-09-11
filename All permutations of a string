@@ -1,0 +1,22 @@
+void myfunc(string str,int l,int r,vector<string> &ans){
+        
+        if(l==r){
+            ans.push_back(str);
+            return;
+        }
+        for(int i=l;i<=r;i++){
+            swap(str[i],str[l]);
+            myfunc(str,l+1,r,ans);
+            swap(str[i],str[l]); //Backtrack
+        }
+    }
+    
+    vector<string> permutation(string S)
+    {
+        int l=0;
+        int r=S.length()-1;
+        vector<string> ans;
+        myfunc(S,l,r,ans);
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
