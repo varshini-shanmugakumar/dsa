@@ -1,0 +1,24 @@
+void quickSort(int arr[], int low, int high)
+    {
+       if(low<high){
+            int partitionIdx = partition(arr,low,high);
+            quickSort(arr,low,partitionIdx-1);
+            quickSort(arr,partitionIdx+1,high);
+        }
+    }
+    
+ 
+    int partition (int arr[], int low, int high)
+    {
+        int swpIdx = low-1;
+        int pivot = arr[high];
+        for(int j=low;j<=high-1;j++){
+            if(arr[j]<pivot){
+                swpIdx++;
+                swap(arr[swpIdx],arr[j]);
+            }
+        }
+        swpIdx++;
+        swap(arr[swpIdx],arr[high]);
+        return swpIdx;
+    }
